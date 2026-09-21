@@ -2,7 +2,11 @@ if(FORCE_PYTHON2)
     set(BOOST_PYTHON_COMPONENT "python27")
 else()
     # Using Python3_VERSION_MAJOR/MINOR from your top-level file
-    set(BOOST_PYTHON_COMPONENT "python${Python3_VERSION_MAJOR}${Python3_VERSION_MINOR}")
+    set(BOOST_PYTHON_COMPONENT "python")
+endif()
+
+if(POLICY CMP0167)
+  cmake_policy(SET CMP0167 NEW)
 endif()
 
 find_package(Boost 1.53 REQUIRED COMPONENTS system ${BOOST_PYTHON_COMPONENT})
